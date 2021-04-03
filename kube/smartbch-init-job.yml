@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: smartbch-init
+spec:
+  template:
+    metadata:
+      name: smartbch-init
+    spec:
+      containers:
+      - name: smartbch-init
+        image: zquestz/smartbch:latest
+        command: ["smartbchd", "init", "mynode", "--chain-id", '0x1', "--init-balance=10000000000000000000", "--test-keys=4d8aed1388c8f6f900d419858c1bb8863e8fb363f9eea3f6878571025fd295b1,6df46168651c568116cc093ef55c978954f1e44096e770aef86b9fcbe8a06abe,62adf451f6f2c527f5219fe6cc5ecf28183a5da78d7b3e9ef9d3165d6ed2d121,b75f59db1d144bdcacab6829dfd4afac038ca0b0244882a6c67af9913bba5603,b74acb8e45d222807ed11bb17ccfa88e940b8b132a6d7491d725cd93f1338918,d4aa0fb61b153538b1140ff8d74b4fa5dcd009628af76bf0c26689f2342f4023,43d0c6c4350aea2d91260b9250d70c4a1cbeead9b85863b20104c3a1af392e5d,e42c72c1fc27ed6ae78384c156e46d3b7b820e9aad03f6d264e75227b104f6db,d9cec12aca07ec1004d0a5528940b40e33e9d3df30088677bd876806704c189d,7bbc9c1886f3064f79f937ac619204bb3372c716ce49166b0bd0588c38cd14cb"]
+        volumeMounts:
+          - name: smartbch-data
+            mountPath: /root/.smartbchd
+        resources:
+          requests:
+            memory: "1Gi"
+      restartPolicy: Never
+      volumes:
+        - name: smartbch-data
+          gcePersistentDisk:
+            pdName: smartbch-data
+            fsType: ext4

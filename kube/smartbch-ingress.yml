@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: smartbch-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - smartbch.greyh.at
+    secretName: smartbch-tls
+  backend:
+    serviceName: smartbch
+    servicePort: 105
+  rules:
+  - host: smartbch.greyh.at
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: smartbch
+          servicePort: 105
