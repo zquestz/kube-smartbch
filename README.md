@@ -9,4 +9,5 @@ Kubernetes configurations for smartBCH on GCE. Note that this requires `cert-man
 5. Run `kubectl apply -f kube/smartbch-deployment.yml` to deploy the app.
 6. Run `kubectl apply -f kube/smartbch-srv.yml` to setup the kubernetes service.
 7. Run `kubectl apply -f kube/smartbch-ingress.yml` to add ingress from outside the cluster.
-8. Profit!
+8. Run `kubectl apply -f kube/smartbch-wss-ingress.yml` to add websocket ingress from outside the cluster.
+9. Profit!
