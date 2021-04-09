@@ -35,6 +35,8 @@ spec:
         ports:
           - name: api
             containerPort: 8545
+          - name: websocket
+            containerPort: 8546
       restartPolicy: Always
       volumes:
         - name: smartbch-data

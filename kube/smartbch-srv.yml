@@ -5,8 +5,12 @@ metadata:
   namespace: default
 spec:
   ports:
-    - port: 105
+    - name: api
+      port: 105
       targetPort: 8545
+    - name: websockets
+      port: 106
+      targetPort: 8546
   selector:
     service: smartbch
   type: NodePort
