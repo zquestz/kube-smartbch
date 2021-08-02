@@ -10,7 +10,7 @@ spec:
       containers:
       - name: smartbch-init
         image: zquestz/smartbch:mainnet
-        command: ["smartbchd", "init", "mynode", "--chain-id", "0x2710"]
+        command: ["./smartbchd", "init", "mynode", "--chain-id", "0x2710"]
         volumeMounts:
           - name: smartbch-data
             mountPath: /root/.smartbchd

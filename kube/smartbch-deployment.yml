@@ -23,7 +23,7 @@ spec:
         - start
         - --mainnet-genesis-height=698502
         command:
-        - smartbchd
+        - ./smartbchd
         image: zquestz/smartbch:mainnet
         imagePullPolicy: Always
         name: smartbch
