@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch
-    version: 0.1.0
+    version: 0.3.0
   name: smartbch
 spec:
   strategy:
@@ -21,9 +21,10 @@ spec:
       containers:
       - args:
         - start
+        - --mainnet-genesis-height=698502
         command:
         - smartbchd
-        image: zquestz/smartbch:latest
+        image: zquestz/smartbch:mainnet
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:
@@ -31,7 +32,7 @@ spec:
             name: smartbch-data
         resources:
           requests:
-            memory: "512Mi"
+            memory: "1Gi"
         ports:
           - name: api
             containerPort: 8545
