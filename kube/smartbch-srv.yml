@@ -4,6 +4,7 @@ metadata:
   name: smartbch
   namespace: default
 spec:
+  externalTrafficPolicy: Local
   ports:
     - name: api
       port: 105
@@ -14,3 +15,4 @@ spec:
   selector:
     service: smartbch
   type: NodePort
+  

@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch
-    version: 0.3.0
+    version: 0.3.3
   name: smartbch
 spec:
   strategy:
@@ -32,7 +32,7 @@ spec:
             name: smartbch-data
         resources:
           requests:
-            memory: "1Gi"
+            memory: "5Gi"
         ports:
           - name: api
             containerPort: 8545
