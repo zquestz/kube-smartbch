@@ -32,7 +32,10 @@ spec:
             name: smartbch-data
         resources:
           requests:
-            memory: "5Gi"
+            memory: "7Gi"
+          limits:
+            memory: "7Gi"
+        terminationGracePeriodSeconds: 600
         ports:
           - name: api
             containerPort: 8545
