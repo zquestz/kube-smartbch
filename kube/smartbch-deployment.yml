@@ -35,13 +35,13 @@ spec:
             memory: "7Gi"
           limits:
             memory: "7Gi"
-        terminationGracePeriodSeconds: 600
         ports:
           - name: api
             containerPort: 8545
           - name: websocket
             containerPort: 8546
       restartPolicy: Always
+      terminationGracePeriodSeconds: 600
       volumes:
         - name: smartbch-data
           gcePersistentDisk:
