@@ -5,7 +5,7 @@ metadata:
   labels:
     service: smartbch
     version: 0.3.4
-  name: smartbch
+  name: smartbch-secondary
 spec:
   strategy:
     type: Recreate
@@ -29,7 +29,7 @@ spec:
         name: smartbch
         volumeMounts:
           - mountPath: /root/.smartbchd
-            name: smartbch-data
+            name: smartbch-secondary-data
         resources:
           requests:
             memory: "7Gi"
@@ -43,7 +43,7 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 600
       volumes:
-        - name: smartbch-data
+        - name: smartbch-secondary-data
           gcePersistentDisk:
-            pdName: smartbch-data
+            pdName: smartbch-secondary-data
             fsType: ext4
