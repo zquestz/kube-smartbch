@@ -5,6 +5,7 @@ metadata:
   labels:
     service: smartbch
     version: 0.3.4
+    deploy: smartbch-1
   name: smartbch
 spec:
   strategy:
@@ -13,10 +14,12 @@ spec:
   selector:
     matchLabels:
       service: smartbch
+      deploy: smartbch-1
   template:
     metadata:
       labels:
         service: smartbch
+        deploy: smartbch-1
     spec:
       containers:
       - args:
@@ -40,6 +43,8 @@ spec:
             containerPort: 8545
           - name: websocket
             containerPort: 8546
+          - name: peer
+            containerPort: 26656
       restartPolicy: Always
       terminationGracePeriodSeconds: 600
       volumes:
