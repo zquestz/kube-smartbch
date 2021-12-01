@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    service: smartbch-syncing
+    version: 0.3.4
+  name: smartbch-syncing
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      service: smartbch-syncing
+  template:
+    metadata:
+      labels:
+        service: smartbch-syncing
+    spec:
+      containers:
+      - args:
+        - start
+        - --mainnet-genesis-height=698502
+        - --https.addr=off
+        - --wss.addr=off
+        command:
+        - ./smartbchd
+        image: zquestz/smartbch:0.3.4
+        imagePullPolicy: Always
+        name: smartbch
+        volumeMounts:
+          - mountPath: /root/.smartbchd
+            name: smartbch-data
+        resources:
+          requests:
+            memory: "7Gi"
+          limits:
+            memory: "7Gi"
+        ports:
+          - name: api
+            containerPort: 8545
+          - name: websocket
+            containerPort: 8546
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 600
+      volumes:
+        - name: smartbch-data
+          gcePersistentDisk:
+            pdName: smartbch-data
+            fsType: ext4
