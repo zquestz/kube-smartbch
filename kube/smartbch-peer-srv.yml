@@ -13,4 +13,5 @@ spec:
   selector:
     deploy: smartbch-1
   type: LoadBalancer
+  loadBalancerIP: 35.209.93.74
   externalTrafficPolicy: Local

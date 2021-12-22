@@ -8,9 +8,10 @@ metadata:
 spec:
   ports:
     - name: peer
-      port: 26656
+      port: 27656
       targetPort: 27656
   selector:
     deploy: smartbch-2
   type: LoadBalancer
+  loadBalancerIP: 35.209.224.243
   externalTrafficPolicy: Local
