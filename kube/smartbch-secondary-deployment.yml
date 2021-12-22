@@ -46,7 +46,7 @@ spec:
           - name: websocket
             containerPort: 8546
           - name: peer
-            containerPort: 26656
+            containerPort: 27656
       restartPolicy: Always
       terminationGracePeriodSeconds: 600
       volumes:
