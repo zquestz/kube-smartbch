@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch
-    version: 0.3.4
+    version: 0.3.5
     deploy: smartbch-2
   name: smartbch-secondary
 spec:
@@ -25,9 +25,11 @@ spec:
       - args:
         - start
         - --mainnet-genesis-height=698502
+        - --https.addr=off
+        - --wss.addr=off
         command:
         - ./smartbchd
-        image: zquestz/smartbch:0.3.4
+        image: zquestz/smartbch:0.3.5
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:
@@ -35,9 +37,9 @@ spec:
             name: smartbch-secondary-data
         resources:
           requests:
-            memory: "7Gi"
+            memory: "9Gi"
           limits:
-            memory: "7Gi"
+            memory: "9Gi"
         ports:
           - name: api
             containerPort: 8545

@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch-syncing
-    version: 0.3.4
+    version: 0.3.5
   name: smartbch-syncing
 spec:
   strategy:
@@ -26,7 +26,7 @@ spec:
         - --wss.addr=off
         command:
         - ./smartbchd
-        image: zquestz/smartbch:0.3.4
+        image: zquestz/smartbch:0.3.5
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:
@@ -34,9 +34,9 @@ spec:
             name: smartbch-data
         resources:
           requests:
-            memory: "7Gi"
+            memory: "9Gi"
           limits:
-            memory: "7Gi"
+            memory: "9Gi"
         ports:
           - name: api
             containerPort: 8545
