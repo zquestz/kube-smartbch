@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: smartbch-ingress
@@ -11,14 +11,19 @@ spec:
   - hosts:
     - smartbch.greyh.at
     secretName: smartbch-tls
-  backend:
-    serviceName: smartbch
-    servicePort: 105
+  defaultBackend:
+    service:
+      name: smartbch
+      port:
+        number: 105
   rules:
   - host: smartbch.greyh.at
     http:
       paths:
       - path: /
+        pathType: ImplementationSpecific
         backend:
-          serviceName: smartbch
-          servicePort: 105
+          service:
+            name: smartbch
+            port:
+              number: 105
