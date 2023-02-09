@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch
-    version: 0.3.5
+    version: 0.4.7
     deploy: smartbch-1
   name: smartbch
 spec:
@@ -27,9 +27,10 @@ spec:
         - --mainnet-genesis-height=698502
         - --https.addr=off
         - --wss.addr=off
+        - --skip-sanity-check
         command:
-        - ./smartbchd
-        image: zquestz/smartbch:0.3.5
+        - smartbchd
+        image: smartbch/smartbchd:v0.4.7
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:
