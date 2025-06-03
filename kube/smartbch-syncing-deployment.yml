@@ -28,7 +28,7 @@ spec:
         - --log_level=error
         - --no-bch-client
         command:
-        - ./smartbchd
+        - smartbchd
         image: smartbch/smartbchd:v0.6.1
         imagePullPolicy: Always
         name: smartbch
