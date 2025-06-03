@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch
-    version: 0.4.7
+    version: 0.6.1
     deploy: smartbch-1
   name: smartbch
 spec:
@@ -28,9 +28,11 @@ spec:
         - --https.addr=off
         - --wss.addr=off
         - --skip-sanity-check
+        - --log_level=error
+        - --no-bch-client
         command:
         - smartbchd
-        image: smartbch/smartbchd:v0.4.7
+        image: smartbch/smartbchd:v0.6.1
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:

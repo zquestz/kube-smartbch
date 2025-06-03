@@ -4,7 +4,7 @@ metadata:
   namespace: default
   labels:
     service: smartbch-syncing
-    version: 0.3.5
+    version: 0.6.1
   name: smartbch-syncing
 spec:
   strategy:
@@ -24,9 +24,12 @@ spec:
         - --mainnet-genesis-height=698502
         - --https.addr=off
         - --wss.addr=off
+        - --skip-sanity-check
+        - --log_level=error
+        - --no-bch-client
         command:
         - ./smartbchd
-        image: zquestz/smartbch:0.3.5
+        image: smartbch/smartbchd:v0.6.1
         imagePullPolicy: Always
         name: smartbch
         volumeMounts:

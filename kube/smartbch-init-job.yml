@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: smartbch-init
-        image: smartbch/smartbchd:v0.4.7
+        image: smartbch/smartbchd:v0.6.1
         command: ["smartbchd", "init", "mynode", "--chain-id", "0x2710"]
         volumeMounts:
           - name: smartbch-data
